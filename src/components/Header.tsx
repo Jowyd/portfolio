@@ -1,82 +1,77 @@
-import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import LogoIcon from "./Logo";
+import "./header.css";
+import useScrollHandler from "../hooks/useScrollHandler";
+
+const NavItem = ({
+  to,
+  label,
+  power,
+}: {
+  to: string;
+  label: string;
+  power?: string;
+}) => {
+  const location = useLocation();
+  const isActive = location.pathname === to;
+
+  const classNames = `text-2xl flex-1 text-center ${
+    isActive
+      ? "text-fiddle-light"
+      : "text-fiddle-gray group-hover:text-fiddle-gray-dark hover:text-fiddle-light transition-colors"
+  }`;
+
+  return (
+    <Link to={to} className={classNames}>
+      <span className={`relative ${isActive ? "active-nav" : ""}`}>
+        {label}
+        {power && (
+          <span className="ml-1 text-xs absolute top-0 font-khteka-mono">
+            {power}
+          </span>
+        )}
+      </span>
+    </Link>
+  );
+};
+
+const LogoLink = () => (
+  <Link
+    to="/"
+    className="flex bg-primary py-2 px-2 rounded-3xl w-3/7 justify-between items-center"
+  >
+    <div className="flex flex-col p-1">
+      <h1 className="text-fiddle-light font-khteka text-5xl">Myal.K</h1>
+      <span className="hidden md:block text-fiddle-gray text-m font-xarrovv">
+        心の平安
+      </span>
+    </div>
+    <div className="hidden md:flex items-center">
+      <span className="mr-4 text-fiddle-gray text-sm">DEVELOPER</span>
+    </div>
+    <LogoIcon width={50} height={50} />
+  </Link>
+);
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolled]);
-
-  const isActive = (path: string) => {
-    return location.pathname === path;
-  };
+  const scrolled = useScrollHandler(50);
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 py-6 px-6 lg:px-12 transition-all duration-300 ${
-        scrolled ? 'bg-fiddle-dark bg-opacity-90 backdrop-blur-sm' : ''
+      className={`fixed top-0 left-0 w-full z-50 py-2 lg:px-5 transition-all duration-300 flex ${
+        scrolled ? "" : ""
       }`}
     >
-      <div className="container mx-auto">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center">
-            <div className="text-fiddle-light font-khteka text-xl md:text-2xl">
-              Fiddle.Digital
-            </div>
-            <span className="ml-2 hidden md:block text-fiddle-gray text-sm">
-              フィドル
-            </span>
-          </Link>
+      <div className="flex items-start justify-between w-full gap-2">
+        <LogoLink />
 
-          <div className="hidden md:flex items-center">
-            <span className="mr-4 text-fiddle-gray text-sm">
-              DESIGN AGENCY
-            </span>
-          </div>
-
-          <nav className="flex items-center space-x-8">
-            <Link
-              to="/work"
-              className={`text-sm uppercase ${isActive('/work') ? 'text-fiddle-light' : 'text-fiddle-gray hover:text-fiddle-light transition-colors'}`}
-            >
-              Work
-              {isActive('/work') && <span className="ml-1 text-xs">(15)</span>}
-            </Link>
-            <Link
-              to="/about"
-              className={`text-sm uppercase ${isActive('/about') ? 'text-fiddle-light' : 'text-fiddle-gray hover:text-fiddle-light transition-colors'}`}
-            >
-              About
-            </Link>
-            <Link
-              to="/connect"
-              className={`text-sm uppercase ${isActive('/connect') ? 'text-fiddle-light' : 'text-fiddle-gray hover:text-fiddle-light transition-colors'}`}
-            >
-              Let's talk
-              {isActive('/connect') && <span className="ml-1">+</span>}
-            </Link>
-            <a
-              href="https://exp.fiddle.digital"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm uppercase text-fiddle-gray hover:text-fiddle-light transition-colors"
-            >
-              Exp.
-            </a>
-          </nav>
-        </div>
+        <nav className="flex items-center space-x-8 flex-auto p-2 rounded-2xl bg-fiddle-dark justify-around group">
+          <NavItem to="/work" label="Work" power={"(15)"} />
+          <NavItem to="/about" label="About" />
+          <NavItem to="/connect" label="Let's talk" power={"+"} />
+          <NavItem to="https://exp.fiddle.digital" label="Exp." power={"↗"} />
+        </nav>
       </div>
     </header>
   );

@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Lenis from "@studio-freight/lenis";
+import Lenis from "lenis";
 // import HomePage from './pages/HomePage';
 // import WorkPage from './pages/WorkPage';
 // import AboutPage from './pages/AboutPage';
 // import ContactPage from './pages/ContactPage';
 // import NotFoundPage from './pages/NotFoundPage';
 import Layout from "./layouts/Layout";
+import HomePage from "./pages/HomePage";
 
 function App() {
   // Initialize smooth scrolling with Lenis
@@ -34,8 +35,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          {/* <Route index element={<HomePage />} />
-          <Route path="/work" element={<WorkPage />} />
+          <Route index element={<HomePage />} />
+          {/* <Route path="/work" element={<WorkPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/connect" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} /> */}

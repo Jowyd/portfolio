@@ -1,4 +1,6 @@
-/** @type {import('tailwindcss').Config} */
+const { data } = require("react-router-dom");
+
+// /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
@@ -12,7 +14,10 @@ module.exports = {
       colors: {
         fiddle: {
           dark: "#0e1517",
-          gray: "#c3c3cb",
+          gray: {
+            DEFAULT: "#fff",
+            dark: "#544d56",
+          },
           light: "#e8e2e8",
           accent: "#74747c",
           secondary: "#5f5863",
@@ -69,11 +74,11 @@ module.exports = {
         },
       },
       fontFamily: {
-        'khteka': ['KHTeka-Regular', 'sans-serif'],
-        'khteka-mono': ['KHTekaMono-Regular', 'monospace'],
+        khteka: ["KHTeka-Regular", "sans-serif"],
+        "khteka-mono": ["KHTekaMono-Regular", "monospace"],
       },
       gridTemplateColumns: {
-        'layout': 'repeat(12, 1fr)',
+        layout: "repeat(12, 1fr)",
       },
       keyframes: {
         "accordion-down": {
@@ -100,18 +105,18 @@ module.exports = {
       container: {
         center: true,
         padding: {
-          DEFAULT: '1rem',
-          sm: '2rem',
-          lg: '4rem',
-          xl: '5rem',
-          '2xl': '6rem',
+          DEFAULT: "1rem",
+          sm: "2rem",
+          lg: "4rem",
+          xl: "5rem",
+          "2xl": "6rem",
         },
         screens: {
-          sm: '640px',
-          md: '768px',
-          lg: '1024px',
-          xl: '1280px',
-          '2xl': '1536px',
+          sm: "640px",
+          md: "768px",
+          lg: "1024px",
+          xl: "1280px",
+          "2xl": "1536px",
         },
       },
     },
