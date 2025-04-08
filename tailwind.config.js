@@ -14,6 +14,7 @@ module.exports = {
       colors: {
         fiddle: {
           dark: "#0e1517",
+          primary: "#0e1517",
           gray: {
             DEFAULT: "#fff",
             dark: "#544d56",

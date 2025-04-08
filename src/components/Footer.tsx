@@ -13,7 +13,7 @@ const NavItem = ({
     <span className={`${className}`}>
       <Link
         to={to}
-        className={`text-fiddle-dark hover:text-fiddle-dark transition-colors text-center text-8xl hover-underline-animation ${className}`}
+        className={`text-fiddle-dark hover:text-fiddle-dark transition-colors text-center text-8xl hover-underline-animation`}
       >
         {label}
       </Link>
@@ -21,16 +21,37 @@ const NavItem = ({
   );
 };
 
+const SocialLink = ({
+  href,
+  label,
+  icon,
+}: {
+  href: string;
+  label: string;
+  icon?: React.ReactNode;
+}) => {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-fiddle-dark transition-colors hover-underline-animation bg-fiddle-gray"
+    >
+      <span>{label}</span>
+    </a>
+  );
+};
+
 const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="pb-12 px-2 border-t border-fiddle-accent border-opacity-20 bg-amber-700">
+    <footer className="pb-12 px-4 border-t border-fiddle-accent mt-4">
       <div className="flex flex-col">
         <div className="w-full flex flex-col items-center mb-4">
           <div className="flex items-center justify-center mb-4 w-full gap-1">
             <span className="bg-fiddle-dark w-full h-[1px]"></span>
-            <h2 className="block text-fiddle-gray text-4xl bg-fiddle-dark rounded-3xl px-6 py-2 w-fit">
+            <h2 className="block text-fiddle-gray text-4xl bg-fiddle-dark rounded-3xl px-4 py-1 w-fit">
               Myal.K
             </h2>
             <span className="bg-fiddle-dark w-full h-[1px]"></span>
@@ -47,66 +68,25 @@ const Footer = () => {
           <NavItem to="/connect" label="Let's Talk" />
         </div>
 
-        <div className="flex flex-col space-y-4">
-          <a
-            href="https://www.awwwards.com/Fiddle.Digital/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-fiddle-gray hover:text-fiddle-light transition-colors"
-          >
-            Awwwards
-          </a>
-          <a
-            href="https://www.instagram.com/fiddle.digital/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-fiddle-gray hover:text-fiddle-light transition-colors"
-          >
-            Instagram
-          </a>
-          <a
-            href="https://dribbble.com/FiddleDigital"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-fiddle-gray hover:text-fiddle-light transition-colors"
-          >
-            Dribbble
-          </a>
-          <a
-            href="https://www.behance.net/fiddledigital"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-fiddle-gray hover:text-fiddle-light transition-colors"
-          >
-            Behance
-          </a>
+        <div className="flex w-full justify-center items-center py-6 gap-4">
+          <SocialLink label="Github" href="https://github.com/jowyd" />
+          <SocialLink
+            label="LinkedIn"
+            href="https://fr.linkedin.com/in/lyam-keovilay-4494702a0"
+          />
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-8 border-t border-fiddle-accent border-opacity-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-8 border-t border-fiddle-dark border-opacity-10">
           <div className="flex items-center space-x-4 mb-4 md:mb-0">
-            <button
-              className="text-fiddle-gray hover:text-fiddle-light transition-colors text-sm"
-              onClick={() => {
-                localStorage.removeItem("cookiesAccepted");
-                window.location.reload();
-              }}
-            >
-              Cookie preferences
-            </button>
-            <span className="text-fiddle-gray text-sm">
-              Fiddle.Digital {year}
-            </span>
-            <Link
-              to="/404"
-              className="text-fiddle-gray hover:text-fiddle-light transition-colors text-sm"
-            >
+            <span className="text-sm">Mayl.K {year}</span>
+            <Link to="/404" className="transition-colors text-sm">
               p. 4 04
             </Link>
           </div>
 
           <Link to="/" className="flex items-center">
-            <span className="text-fiddle-gray text-sm">Fiddle.Digital</span>
-            <span className="mx-2 text-fiddle-gray text-sm">Design agency</span>
+            <span className="text-sm">Mayl.K</span>
+            <span className="mx-2 text-sm">Developer</span>
           </Link>
         </div>
       </div>
