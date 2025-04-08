@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import WorkLink from "../components/WorkLinks";
+import { featured } from "../data/work";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -72,7 +74,6 @@ const HomePage = () => {
       }
     };
   }, []);
-
   return (
     <div className="overflow-x-hidden">
       {/* Hero Section */}
@@ -92,6 +93,14 @@ const HomePage = () => {
           <div className="hero-subtitle font-khteka-mono text-fiddle-accent mt-10">
             <span className="text-xl">2025</span>
           </div>
+        </div>
+      </section>
+      {/* Work links */}
+      <section className="my-8">
+        <div className="flex flex-col justify-center items-center">
+          {featured.map((work) => (
+            <WorkLink {...work} />
+          ))}
         </div>
       </section>
 

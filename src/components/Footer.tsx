@@ -46,7 +46,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="pb-12 px-4 border-t border-fiddle-accent mt-4">
+    <footer className="pb-12 px-4 border-fiddle-accent mt-4">
       <div className="flex flex-col">
         <div className="w-full flex flex-col items-center mb-4">
           <div className="flex items-center justify-center mb-4 w-full gap-1">
@@ -78,7 +78,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center pt-8 border-t border-fiddle-dark border-opacity-10">
           <div className="flex items-center space-x-4 mb-4 md:mb-0">
-            <span className="text-sm">Mayl.K {year}</span>
+            <span className="text-sm">Mayl.K © {year}</span>
             <Link to="/404" className="transition-colors text-sm">
               p. 4 04
             </Link>
