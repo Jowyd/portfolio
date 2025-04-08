@@ -112,3 +112,32 @@ body {
   --chart-4: 280 65% 60%;
   --chart-5: 340 75% 55%;
 }
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: currentColor;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+}
+
+.hover-underline-animation::after {
+  transform-origin: bottom right;
+}
+
+.hover-underline-animation:hover::after {
+  transform-origin: bottom left;
+}
