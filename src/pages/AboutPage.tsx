@@ -100,7 +100,7 @@ const AboutPage = () => {
           username="jowyd"
           theme={{
             light: ["#f0f0f0", "#d9d9d9", "#bfbfbf", "#8c8c8c", "#000000"],
-            dark: ["#333333", "#4d4d4d", "#666666", "#808080", "#000000"],
+            dark: ["#f0f0f0", "#d9d9d9", "#bfbfbf", "#8c8c8c", "#000000"],
           }}
           blockSize={14}
           blockMargin={6}
