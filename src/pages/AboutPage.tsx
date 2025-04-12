@@ -69,13 +69,12 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt">
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-fiddle-dark" />
           <BackgroundEffect />
         </div>
         <div className="relative z-10 text-center px-4">
-          {/* <BackgroundEffect /> */}
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in-up">
             {aboutData.title}
           </h1>
@@ -87,8 +86,43 @@ const AboutPage = () => {
 
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-16">
+        {/* Education Section */}
+        <section
+          ref={(el) => addToRefs(el, 0)}
+          className="mb-20"
+        >
+          <h2 className="text-3xl font-bold mb-8 text-center">Education</h2>
+          <div className="space-y-8">
+            {aboutData.education.map((edu, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors duration-300"
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    {edu.degree}
+                  </h3>
+                  <span className="text-sm text-gray-500 mt-2 md:mt-0">
+                    {edu.year}
+                  </span>
+                </div>
+                <p className="text-gray-600 mb-2">{edu.school}</p>
+                <p className="text-gray-700">{edu.description}</p>
+                {edu.current && (
+                  <span className="inline-block mt-4 px-3 py-1 bg-fiddle-dark/10 text-fiddle-dark rounded-full text-sm">
+                    Current
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* Technologies Section */}
-        <section ref={(el) => addToRefs(el, 0)} className="mb-20">
+        <section
+          ref={(el) => addToRefs(el, 1)}
+          className="mb-20"
+        >
           <h2 className="text-3xl font-bold mb-8 text-center">Technologies</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {aboutData.technologies.map((tech, index) => (
@@ -107,7 +141,10 @@ const AboutPage = () => {
         </section>
 
         {/* Software Section */}
-        <section ref={(el) => addToRefs(el, 1)} className="mb-20">
+        <section
+          ref={(el) => addToRefs(el, 2)}
+          className="mb-20"
+        >
           <h2 className="text-3xl font-bold mb-8 text-center">Tools</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {aboutData.software.map((tool, index) => (
@@ -115,7 +152,10 @@ const AboutPage = () => {
                 key={index}
                 className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300"
               >
-                <Icon icon={tool.icon} className="w-8 h-8 text-fiddle-dark" />
+                <Icon
+                  icon={tool.icon}
+                  className="w-8 h-8 text-fiddle-dark"
+                />
                 <span className="font-medium text-gray-700">{tool.name}</span>
               </div>
             ))}
@@ -123,7 +163,10 @@ const AboutPage = () => {
         </section>
 
         {/* Learning Section */}
-        <section ref={(el) => addToRefs(el, 2)} className="mb-20">
+        <section
+          ref={(el) => addToRefs(el, 3)}
+          className="mb-20"
+        >
           <h2 className="text-3xl font-bold mb-8 text-center">Learning</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {aboutData.learning.map((tech, index) => (
@@ -131,7 +174,10 @@ const AboutPage = () => {
                 key={index}
                 className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300"
               >
-                <Icon icon={tech.icon} className="w-8 h-8 text-fiddle-dark" />
+                <Icon
+                  icon={tech.icon}
+                  className="w-8 h-8 text-fiddle-dark"
+                />
                 <div>
                   <h3 className="font-medium text-gray-700">{tech.name}</h3>
                   <p className="text-sm text-gray-500">{tech.description}</p>
