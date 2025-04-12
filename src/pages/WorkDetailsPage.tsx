@@ -1,6 +1,6 @@
 import { redirect, useParams, Link } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { works } from "../data/work";
 import { Icon } from "@iconify/react";
 
@@ -33,6 +33,7 @@ export const WorkDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
   const workId = parseInt(id || "0", 10);
   const work = works.find((work) => work.id === workId);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   if (!work) {
     redirect("/404");
@@ -141,17 +142,45 @@ export const WorkDetailsPage = () => {
                   return (
                     <div
                       key={index}
-                      className={`group relative overflow-hidden rounded-lg shadow-lg ${getSizeClass()}`}
+                      className={`group relative overflow-hidden rounded-lg shadow-lg ${getSizeClass()} cursor-pointer`}
+                      onClick={() => setSelectedImage(image)}
                     >
                       <img
                         src={image}
                         alt={`${work.title} screenshot ${index + 1}`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"></div>
+                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <Icon icon="mdi:fullscreen" className="w-8 h-8 text-white" />
+                      </div>
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          )}
+
+          {/* Lightbox */}
+          {selectedImage && (
+            <div
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+              onClick={() => setSelectedImage(null)}
+            >
+              <div className="relative max-w-5xl w-full h-full flex items-center justify-center">
+                <img
+                  src={selectedImage}
+                  alt="Full screen"
+                  className="max-h-full max-w-full object-contain"
+                />
+                <button
+                  className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-300"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedImage(null);
+                  }}
+                >
+                  <Icon icon="mdi:close" className="w-8 h-8" />
+                </button>
               </div>
             </div>
           )}
