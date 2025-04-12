@@ -44,7 +44,7 @@ export const WorkDetailsPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-fiddle-dark">
-      <div className="h-[30vh] w-full">
+      <div className="h-[50vh] w-full">
         <BackgroundEffect />
       </div>
 
@@ -147,7 +147,7 @@ export const WorkDetailsPage = () => {
           {/* Other Projects Section */}
           <div className="mt-20 pt-12 border-t border-gray-200 animate-fade-in-up delay-600">
             <h2 className="text-2xl font-semibold mb-8 text-center">
-              Autres projets
+              Other Projects
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {otherProjects.map((project) => (

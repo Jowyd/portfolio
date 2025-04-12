@@ -40,17 +40,17 @@ const works: Work[] = [
       "https://cdn.discordapp.com/attachments/1122199917373427803/1360564448623988977/image.png?ex=67fb93e2&is=67fa4262&hm=441548c5faf32cc8184f5b8a8100f5398dfd6cbf08c84b34fd6c021911bf0bce&",
     ],
   },
-  {
-    id: 2,
-    title: "FloraManage",
-    tag: ["Web Development"],
-    imageUrl: "https://placehold.co/300",
-    description: "A web application for managing flora data.",
-    technologies: [
-      { name: "CakePHP", icon: "simple-icons:tailwindcss" },
-      { name: "Tailwind", icon: "simple-icons:tailwindcss" },
-    ],
-  },
+  // {
+  //   id: 2,
+  //   title: "FloraManage",
+  //   tag: ["Web Development"],
+  //   imageUrl: "https://placehold.co/300",
+  //   description: "A web application for managing flora data.",
+  //   technologies: [
+  //     { name: "CakePHP", icon: "simple-icons:tailwindcss" },
+  //     { name: "Tailwind", icon: "simple-icons:tailwindcss" },
+  //   ],
+  // },
   {
     id: 3,
     title: "Climbing VR/AR",
@@ -76,12 +76,24 @@ const works: Work[] = [
   {
     id: 4,
     title: "TheCrew",
-    tag: ["Web Development"],
+    tag: [
+      "Web Development",
+      "FullStack Development",
+      "Game Development",
+      "RealTime application",
+    ],
     imageUrl: "https://placehold.co/300",
-    description: "A web application for team management.",
+    description:
+      "This project was part of a school project in group. We had to create a game in real time with a back-end and a front-end. The game is a card game called The Crew. The game is played with 4 players. The goal of the game is to complete missions. The game is played with cards. The game is played with a friend. You can see the moves of the game in a list. The game is played with a friend. You can see the moves of the game in a list. Also an history of the games played. This project taught me a lot about Typescript and how to use it in a real project. I also learned how to use Angular and Angular Material for the front-end. I also learned how to use Node.js and Express for the back-end. I also learned how to use Mariadb for the database.",
     technologies: [
-      { name: "Angular", icon: "angular-icon.png" },
-      { name: "Firebase", icon: "firebase-icon.png" },
+      { name: "Angular", icon: "simple-icons:angular" },
+      { name: "Mariadb", icon: "simple-icons:mariadb" },
+      { name: "Docker", icon: "simple-icons:docker" },
+      { name: "Typescript", icon: "simple-icons:typescript" },
+      { name: "Node.js", icon: "simple-icons:nodedotjs" },
+      { name: "Express", icon: "simple-icons:express" },
+      { name: "Socket.io", icon: "simple-icons:socketdotio" },
+      { name: "Jest", icon: "simple-icons:jest" },
     ],
     images: [
       "https://placehold.co/600x400",
@@ -89,22 +101,22 @@ const works: Work[] = [
       "https://placehold.co/600x400",
     ],
   },
-  {
-    id: 5,
-    title: "Rust HTTP Server",
-    tag: ["Software Development"],
-    imageUrl: "https://placehold.co/300",
-    description: "A high-performance HTTP server built with Rust.",
-    technologies: [
-      { name: "Rust", icon: "rust-icon.png" },
-      { name: "Rocket", icon: "rocket-icon.png" },
-    ],
-    images: [
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-      "https://placehold.co/600x400",
-    ],
-  },
+  // {
+  //   id: 5,
+  //   title: "Rust HTTP Server",
+  //   tag: ["Software Development"],
+  //   imageUrl: "https://placehold.co/300",
+  //   description: "A high-performance HTTP server built with Rust.",
+  //   technologies: [
+  //     { name: "Rust", icon: "rust-icon.png" },
+  //     { name: "Rocket", icon: "rocket-icon.png" },
+  //   ],
+  //   images: [
+  //     "https://placehold.co/600x400",
+  //     "https://placehold.co/600x400",
+  //     "https://placehold.co/600x400",
+  //   ],
+  // },
 ];
 
 export function getLink(id: number): string {

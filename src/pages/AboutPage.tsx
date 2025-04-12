@@ -1,197 +1,187 @@
 import { useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Icon } from "@iconify/react";
+import aboutData from "../data/about";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import GitHubCalendar from "react-github-calendar";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { works as otherProjects } from "../data/work";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const DistortedPlane = () => {
+  const mesh = useRef<any>(null);
+
+  useFrame(({ mouse }) => {
+    if (mesh.current) {
+      mesh.current.rotation.z = mouse.x * 0.2;
+      mesh.current.scale.x = 1 + mouse.x * 0.1;
+      mesh.current.scale.y = 1 + mouse.y * 0.1;
+    }
+  });
+
+  return (
+    <mesh ref={mesh}>
+      <planeGeometry args={[5, 5, 8, 8]} />
+      <meshBasicMaterial color="#544d56" wireframe />
+    </mesh>
+  );
+};
+
+const BackgroundEffect = () => (
+  <Canvas camera={{ position: [0, 0, 0.5] }}>
+    <DistortedPlane />
+  </Canvas>
+);
+
 const AboutPage = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const servicesRef = useRef<HTMLDivElement>(null);
-  const descriptionRef = useRef<HTMLDivElement>(null);
-  const awardsRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    // Hero section animation
-    const heroTimeline = gsap.timeline({
-      defaults: { ease: "power3.out" },
+    sectionRefs.current.forEach((section, index) => {
+      if (section) {
+        gsap.fromTo(
+          section,
+          { opacity: 0, y: 50 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
     });
 
-    heroTimeline.fromTo(
-      ".hero-text",
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 1 }
-    );
-
-    // Services animation
-    gsap.fromTo(
-      ".service-item",
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.1,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: servicesRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-
-    // Description animation
-    gsap.fromTo(
-      ".description p",
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.15,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: descriptionRef.current,
-          start: "top 80%",
-        },
-      }
-    );
-
-    // Awards animation
-    gsap.fromTo(
-      ".award-item",
-      { opacity: 0, y: 15 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.05,
-        duration: 0.5,
-        scrollTrigger: {
-          trigger: awardsRef.current,
-          start: "top 85%",
-        },
-      }
-    );
-
-    // Cleanup ScrollTrigger on component unmount
     return () => {
-      const triggers = ScrollTrigger.getAll();
-      for (const trigger of triggers) {
-        trigger.kill();
-      }
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
+  const addToRefs = (el: HTMLElement | null, index: number) => {
+    sectionRefs.current[index] = el;
+  };
+
   return (
-    <div className="overflow-x-hidden">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 lg:px-12" ref={heroRef}>
-        <div className="container mx-auto">
-          <div className="hero-text max-w-3xl">
-            <h1 className="text-3xl md:text-5xl font-khteka mb-8">
-              Inside every person is a whole world. This is the greatest gift.
-              And only some are generous enough to share theirs with us. All the
-              best around is the manifestation of these people.
-            </h1>
-          </div>
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden pt">
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-fiddle-dark" />
+          <BackgroundEffect />
         </div>
-      </section>
-      <section className="flex justify-center">
-        <GitHubCalendar
-          username="jowyd"
-          theme={{
-            light: ["#f0f0f0", "#d9d9d9", "#bfbfbf", "#8c8c8c", "#000000"],
-            dark: ["#f0f0f0", "#d9d9d9", "#bfbfbf", "#8c8c8c", "#000000"],
-          }}
-          blockSize={14}
-          blockMargin={6}
-          hideTotalCount={true}
-        />
-      </section>
-      {/* Services Section */}
-      <section className="py-12 px-6 lg:px-12" ref={servicesRef}>
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-khteka mb-8">
-                Services
-              </h2>
-            </div>
-            <div className="md:col-span-2">
-              <ul className="space-y-2">
-                <li className="service-item text-lg ">Art direction</li>
-                <li className="service-item text-lg ">Branding / Identity</li>
-                <li className="service-item text-lg ">
-                  Design language development
-                </li>
-                <li className="service-item text-lg ">Design systems</li>
-                <li className="service-item text-lg ">Interface design</li>
-                <li className="service-item text-lg ">User experience</li>
-                <li className="service-item text-lg ">Web design</li>
-                <li className="service-item text-lg ">Motion design</li>
-                <li className="service-item text-lg ">Web development</li>
-                <li className="service-item text-lg ">
-                  Launch and maintenance
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div className="relative z-10 text-center px-4">
+          {/* <BackgroundEffect /> */}
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 animate-fade-in-up">
+            {aboutData.title}
+          </h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto animate-fade-in-up delay-100">
+            {aboutData.description}
+          </p>
         </div>
       </section>
 
-      {/* Description Section */}
-      <section className="py-20 px-6 lg:px-12" ref={descriptionRef}>
-        <div className="container mx-auto">
-          <div className="max-w-3xl description space-y-10">
-            <p className="text-lg md:text-xl ">
-              The journey is about discovery, innovation, and ultimately,
-              crafting experiences that resonate on a human level.
-            </p>
-            <p className="text-lg md:text-xl ">
-              The word design, in our understanding, is not at all separate from
-              how it works and the benefit it brings. Design, after all, is
-              attractiveness. What works must be attractive. What is beneficial
-              must be attractive.
-            </p>
-            <p className="text-lg md:text-xl ">
-              Only in the combination of these three entities is true
-              superpower, real strength, and the path to success revealed. And
-              we simply love to walk this path again and again with the people
-              who have been so kind as to give us this opportunity.
-            </p>
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto px-4 py-16">
+        {/* Technologies Section */}
+        <section ref={(el) => addToRefs(el, 0)} className="mb-20">
+          <h2 className="text-3xl font-bold mb-8 text-center">Technologies</h2>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+            {aboutData.technologies.map((tech, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300 group"
+              >
+                <Icon
+                  icon={tech.icon}
+                  className="w-12 h-12 mb-3 text-fiddle-dark group-hover:scale-110 transition-transform duration-300"
+                />
+                <span className="font-medium text-gray-700">{tech.name}</span>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Awards Section */}
-      {/* <section className="py-16 px-6 lg:px-12" ref={awardsRef}>
-        <div className="container mx-auto">
-          <h2 className="text-3xl md:text-4xl font-khteka mb-12">
-            Awards & Recognitions
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="award-item">
-              <h3 className="text-xl font-khteka mb-2">The Webby Awards</h3>
-              <p className="">1 Nomination</p>
-            </div>
-            <div className="award-item">
-              <h3 className="text-xl font-khteka mb-2">Awwwards</h3>
-              <p className="">1 SOTD + 1 DEV + 1 AH + 1 ME + 10 HM</p>
-            </div>
-            <div className="award-item">
-              <h3 className="text-xl font-khteka mb-2">The FWA</h3>
-              <p className="">1 FOTD</p>
-            </div>
-            <div className="award-item">
-              <h3 className="text-xl font-khteka mb-2">Css Design Awards</h3>
-              <p className="">6 SOTD + 5 Special Kudos</p>
-            </div>
-            <div className="award-item">
-              <h3 className="text-xl font-khteka mb-2">Orpetron</h3>
-              <p className="">5 SOTD + 2 OWDA</p>
+        {/* Software Section */}
+        <section ref={(el) => addToRefs(el, 1)} className="mb-20">
+          <h2 className="text-3xl font-bold mb-8 text-center">Tools</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {aboutData.software.map((tool, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+              >
+                <Icon icon={tool.icon} className="w-8 h-8 text-fiddle-dark" />
+                <span className="font-medium text-gray-700">{tool.name}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Learning Section */}
+        <section ref={(el) => addToRefs(el, 2)} className="mb-20">
+          <h2 className="text-3xl font-bold mb-8 text-center">Learning</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {aboutData.learning.map((tech, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+              >
+                <Icon icon={tech.icon} className="w-8 h-8 text-fiddle-dark" />
+                <div>
+                  <h3 className="font-medium text-gray-700">{tech.name}</h3>
+                  <p className="text-sm text-gray-500">{tech.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section>
+          <div className="mt-20 pt-12 border-t border-gray-200 animate-fade-in-up delay-600">
+            <h2 className="text-2xl font-semibold mb-8 text-center">
+              Other Projects
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {otherProjects.map((project) => (
+                <Link
+                  key={project.id}
+                  to={`/work/${project.id}`}
+                  className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                >
+                  <div className="aspect-w-16 aspect-h-9 w-full h-full object-center">
+                    <img
+                      src={project.imageUrl}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-0 left-0 right-0 p-4">
+                        <h3 className="text-white text-lg font-semibold mb-1">
+                          {project.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tag.map((tag, index) => (
+                            <span
+                              key={index}
+                              className="px-2 py-1 bg-white/20 rounded-full text-xs text-white"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
-        </div>
-      </section> */}
+        </section>
+      </div>
     </div>
   );
 };
