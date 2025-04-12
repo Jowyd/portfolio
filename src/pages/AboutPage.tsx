@@ -118,9 +118,64 @@ const AboutPage = () => {
           </div>
         </section>
 
-        {/* Technologies Section */}
+        {/* Experience Section */}
         <section
           ref={(el) => addToRefs(el, 1)}
+          className="mb-20"
+        >
+          <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
+          <div className="space-y-8">
+            {aboutData.experience.map((exp, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-xl p-6 hover:bg-gray-100 transition-colors duration-300"
+              >
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      {exp.title}
+                    </h3>
+                    <p className="text-gray-600">{exp.company}</p>
+                  </div>
+                  <div className="flex flex-col items-end mt-2 md:mt-0">
+                    <span className="text-sm text-gray-500">{exp.period}</span>
+                    {exp.duration && (
+                      <span className="text-sm text-gray-500">{exp.duration}</span>
+                    )}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 mb-4">
+                  <span className="px-3 py-1 bg-fiddle-dark/10 text-fiddle-dark rounded-full text-sm">
+                    {exp.type}
+                  </span>
+                  {exp.current && (
+                    <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                      Current
+                    </span>
+                  )}
+                </div>
+                <p className="text-gray-700 mb-4">{exp.description}</p>
+                {exp.technologies && (
+                  <div className="flex flex-wrap gap-2">
+                    {exp.technologies.map((tech, techIndex) => (
+                      <div
+                        key={techIndex}
+                        className="flex items-center gap-1 px-2 py-1 bg-gray-100 rounded-full text-sm"
+                      >
+                        <Icon icon={tech.icon} className="w-4 h-4" />
+                        <span>{tech.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Technologies Section */}
+        <section
+          ref={(el) => addToRefs(el, 2)}
           className="mb-20"
         >
           <h2 className="text-3xl font-bold mb-8 text-center">Technologies</h2>
@@ -142,7 +197,7 @@ const AboutPage = () => {
 
         {/* Software Section */}
         <section
-          ref={(el) => addToRefs(el, 2)}
+          ref={(el) => addToRefs(el, 3)}
           className="mb-20"
         >
           <h2 className="text-3xl font-bold mb-8 text-center">Tools</h2>
@@ -164,7 +219,7 @@ const AboutPage = () => {
 
         {/* Learning Section */}
         <section
-          ref={(el) => addToRefs(el, 3)}
+          ref={(el) => addToRefs(el, 4)}
           className="mb-20"
         >
           <h2 className="text-3xl font-bold mb-8 text-center">Learning</h2>
