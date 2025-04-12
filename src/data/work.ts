@@ -40,7 +40,7 @@ const works: Work[] = [
       "https://cdn.discordapp.com/attachments/1122199917373427803/1360564495210119338/image.png?ex=67fb93ed&is=67fa426d&hm=2a5551d86da01c9f49aa9a4b99aa281136eae056fd2e4f08a99deea0459ae83a&",
       "https://cdn.discordapp.com/attachments/1122199917373427803/1360564448623988977/image.png?ex=67fb93e2&is=67fa4262&hm=441548c5faf32cc8184f5b8a8100f5398dfd6cbf08c84b34fd6c021911bf0bce&",
     ],
-    github: "https://github.com/jowyd",
+    github: "https://github.com/Jowyd/chaisedotcom",
   },
   // {
   //   id: 2,
@@ -74,7 +74,7 @@ const works: Work[] = [
       "https://cdn.discordapp.com/attachments/1122199917373427803/1360567578182947028/image.png?ex=67fb96cc&is=67fa454c&hm=ff10b8a8c8d402a484c7d3a53904ac7733f5e70a28b634175e0a9f76efe64d9d&",
       "https://cdn.discordapp.com/attachments/1122199917373427803/1360567609493295246/image.png?ex=67fb96d4&is=67fa4554&hm=4a81de2980613af97629eaa19853de7d6ac2a869ddfee24b4cdd8ea2aae937c4&",
     ],
-    github: "https://github.com/jowyd",
+    github: "https://github.com/Jowyd/SAE-Escalade-AR-VR",
   },
   {
     id: 4,
@@ -103,7 +103,7 @@ const works: Work[] = [
       "https://placehold.co/600x400",
       "https://placehold.co/600x400",
     ],
-    github: "https://github.com/jowyd",
+    github: "https://github.com/Jowyd/TheCrew",
   },
   // {
   //   id: 5,
