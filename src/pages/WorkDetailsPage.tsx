@@ -57,9 +57,21 @@ export const WorkDetailsPage = () => {
               alt={work.title}
               className="w-32 h-32 rounded-xl shadow-lg mb-6 object-cover animate-scale-in object-center"
             />
-            <h1 className="text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up delay-100">
-              {work.title}
-            </h1>
+            <div className="flex items-center gap-4">
+              <h1 className="text-4xl font-bold text-gray-900 animate-fade-in-up delay-100">
+                {work.title}
+              </h1>
+              {work.github && (
+                <a
+                  href={work.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-fiddle-dark transition-colors duration-300"
+                >
+                  <Icon icon="mdi:github" className="w-8 h-8" />
+                </a>
+              )}
+            </div>
             <div className="flex gap-2 flex-wrap justify-center animate-fade-in-up delay-200">
               {work.tag.map((tag, index) => (
                 <span
