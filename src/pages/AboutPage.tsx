@@ -87,10 +87,7 @@ const AboutPage = () => {
       {/* Main Content */}
       <div className="max-w-6xl mx-auto px-4 py-16">
         {/* Education Section */}
-        <section
-          ref={(el) => addToRefs(el, 0)}
-          className="mb-20"
-        >
+        <section ref={(el) => addToRefs(el, 0)} className="mb-20">
           <h2 className="text-3xl font-bold mb-8 text-center">Education</h2>
           <div className="space-y-8">
             {aboutData.education.map((edu, index) => (
@@ -119,10 +116,7 @@ const AboutPage = () => {
         </section>
 
         {/* Experience Section */}
-        <section
-          ref={(el) => addToRefs(el, 1)}
-          className="mb-20"
-        >
+        <section ref={(el) => addToRefs(el, 1)} className="mb-20">
           <h2 className="text-3xl font-bold mb-8 text-center">Experience</h2>
           <div className="space-y-8">
             {aboutData.experience.map((exp, index) => (
@@ -140,7 +134,9 @@ const AboutPage = () => {
                   <div className="flex flex-col items-end mt-2 md:mt-0">
                     <span className="text-sm text-gray-500">{exp.period}</span>
                     {exp.duration && (
-                      <span className="text-sm text-gray-500">{exp.duration}</span>
+                      <span className="text-sm text-gray-500">
+                        {exp.duration}
+                      </span>
                     )}
                   </div>
                 </div>
@@ -174,10 +170,7 @@ const AboutPage = () => {
         </section>
 
         {/* Technologies Section */}
-        <section
-          ref={(el) => addToRefs(el, 2)}
-          className="mb-20"
-        >
+        <section ref={(el) => addToRefs(el, 2)} className="mb-20">
           <h2 className="text-3xl font-bold mb-8 text-center">Technologies</h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
             {aboutData.technologies.map((tech, index) => (
@@ -196,10 +189,7 @@ const AboutPage = () => {
         </section>
 
         {/* Software Section */}
-        <section
-          ref={(el) => addToRefs(el, 3)}
-          className="mb-20"
-        >
+        <section ref={(el) => addToRefs(el, 3)} className="mb-20">
           <h2 className="text-3xl font-bold mb-8 text-center">Tools</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {aboutData.software.map((tool, index) => (
@@ -207,10 +197,7 @@ const AboutPage = () => {
                 key={index}
                 className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300"
               >
-                <Icon
-                  icon={tool.icon}
-                  className="w-8 h-8 text-fiddle-dark"
-                />
+                <Icon icon={tool.icon} className="w-8 h-8 text-fiddle-dark" />
                 <span className="font-medium text-gray-700">{tool.name}</span>
               </div>
             ))}
@@ -218,10 +205,7 @@ const AboutPage = () => {
         </section>
 
         {/* Learning Section */}
-        <section
-          ref={(el) => addToRefs(el, 4)}
-          className="mb-20"
-        >
+        <section ref={(el) => addToRefs(el, 4)} className="mb-20">
           <h2 className="text-3xl font-bold mb-8 text-center">Learning</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {aboutData.learning.map((tech, index) => (
@@ -229,10 +213,7 @@ const AboutPage = () => {
                 key={index}
                 className="flex items-center gap-4 p-6 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300"
               >
-                <Icon
-                  icon={tech.icon}
-                  className="w-8 h-8 text-fiddle-dark"
-                />
+                <Icon icon={tech.icon} className="w-8 h-8 text-fiddle-dark" />
                 <div>
                   <h3 className="font-medium text-gray-700">{tech.name}</h3>
                   <p className="text-sm text-gray-500">{tech.description}</p>
