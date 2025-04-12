@@ -58,7 +58,7 @@ export const WorkDetailsPage = () => {
               alt={work.title}
               className="w-32 h-32 rounded-xl shadow-lg mb-6 object-cover animate-scale-in object-center"
             />
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mb-4">
               <h1 className="text-4xl font-bold text-gray-900 animate-fade-in-up delay-100">
                 {work.title}
               </h1>
@@ -151,7 +151,10 @@ export const WorkDetailsPage = () => {
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                        <Icon icon="mdi:fullscreen" className="w-8 h-8 text-white" />
+                        <Icon
+                          icon="mdi:fullscreen"
+                          className="w-8 h-8 text-white"
+                        />
                       </div>
                     </div>
                   );
