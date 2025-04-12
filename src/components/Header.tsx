@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import LogoIcon from "./Logo";
 import "./header.css";
 import useScrollHandler from "../hooks/useScrollHandler";
+import { works } from "../data/work";
 
 const NavItem = ({
   to,
@@ -42,7 +43,7 @@ const LogoLink = () => (
     className="flex bg-primary py-2 px-2 rounded-3xl w-3/7 justify-between items-center"
   >
     <div className="flex flex-col p-1">
-      <h1 className="text-fiddle-light font-khteka text-5xl">Myal.K</h1>
+      <h1 className="text-fiddle-light font-khteka text-5xl">Lyam</h1>
       <span className="hidden md:block text-fiddle-gray text-m font-xarrovv">
         心の平安
       </span>
@@ -67,10 +68,10 @@ const Header = () => {
         <LogoLink />
 
         <nav className="flex items-center space-x-8 flex-auto p-2 rounded-2xl bg-fiddle-dark justify-around group">
-          <NavItem to="/work" label="Work" power={"(15)"} />
+          <NavItem to="/work" label="Work" power={`(${works.length})`} />
           <NavItem to="/about" label="About" />
           <NavItem to="/connect" label="Let's talk" power={"+"} />
-          <NavItem to="https://exp.fiddle.digital" label="Exp." power={"↗"} />
+          {/* <NavItem to="https://exp.fiddle.digital" label="Exp." power={"↗"} /> */}
         </nav>
       </div>
     </header>
