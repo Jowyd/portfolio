@@ -33,6 +33,7 @@ const works: Work[] = [
       { name: "Node.js", icon: "simple-icons:tailwindcss" },
       { name: "Express", icon: "simple-icons:express" },
       { name: "Mariadb", icon: "simple-icons:mariadb" },
+      { name: "Sequelize", icon: "simple-icons:sequelize" },
     ],
     images: [
       "https://cdn.discordapp.com/attachments/1122199917373427803/1360564426637578282/image.png?ex=67fb93dd&is=67fa425d&hm=ccb124f15b8e82319a8aa7d3b9162164fd224c7ca950113b09358d1eca693b2f&",
@@ -65,7 +66,7 @@ const works: Work[] = [
       { name: "Python", icon: "simple-icons:python" },
       { name: "OpenCV", icon: "simple-icons:opencv" },
       { name: "SQLAlchemy", icon: "simple-icons:sqlalchemy" },
-      { name: "Tkinter", icon: "simple-icons:tkinter" },
+      { name: "TKinter", icon: "simple-icons:tkinter" },
       { name: "SQLite", icon: "simple-icons:sqlite" },
     ],
     images: [
