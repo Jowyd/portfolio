@@ -87,7 +87,7 @@ const works: Work[] = [
       "RealTime application",
     ],
     imageUrl:
-      "https://cdn.discordapp.com/attachments/1122199917373427803/1360600744348221540/6917BFE3-454E-474A-A1DD-74194FFB48C9.png?ex=67fbb5b0&is=67fa6430&hm=2a5c96d05d2ccfa21eba2ac2ef9c6517f7d52ae8088d843dc064d64e233d62f4&",
+      "https://cdn.discordapp.com/attachments/1122199917373427803/1360600744348221540/6917BFE3-454E-474A-A1DD-74194FFB48C9.png?ex=67fd0730&is=67fbb5b0&hm=6018fc2484f6df6c87a9bc2b17a46bacc09208e5d9f2d2437abc319b895c5a88&",
     description:
       "This project was part of a school project in group. We had to create a game in real time with a back-end and a front-end. The game is a card game called The Crew. The game is played with 4 players. The goal of the game is to complete missions. The game is played with cards. The game is played with a friend. You can see the moves of the game in a list. The game is played with a friend. You can see the moves of the game in a list. Also an history of the games played. This project taught me a lot about Typescript and how to use it in a real project. I also learned how to use Angular and Angular Material for the front-end. I also learned how to use Node.js and Express for the back-end. I also learned how to use Mariadb for the database.",
     technologies: [
@@ -101,10 +101,10 @@ const works: Work[] = [
       { name: "Jest", icon: "simple-icons:jest" },
     ],
     images: [
-      "https://cdn.discordapp.com/attachments/1122199917373427803/1360601066475098262/704B1DC3-A0D8-4355-BE18-D7605751FF93.png?ex=67fbb5fc&is=67fa647c&hm=99defdfc9f2af76d089d978009220fa53a0f04dc703e46f2cb9d416ff9f6e24b&",
-      "https://cdn.discordapp.com/attachments/1122199917373427803/1360600971763388598/1B2D34CB-8110-4126-967F-05A478A43279.png?ex=67fbb5e6&is=67fa6466&hm=836e942708a66aad6dafbe20dd0dfcd5720a2aa81562a810d079efd41a0b1d50&",
-      "https://cdn.discordapp.com/attachments/1122199917373427803/1360600744348221540/6917BFE3-454E-474A-A1DD-74194FFB48C9.png?ex=67fbb5b0&is=67fa6430&hm=2a5c96d05d2ccfa21eba2ac2ef9c6517f7d52ae8088d843dc064d64e233d62f4&",
-      "https://cdn.discordapp.com/attachments/1122199917373427803/1360601120052875294/D05B4136-B9CF-445D-9AFC-845A53839DA6.png?ex=67fbb609&is=67fa6489&hm=bf395d6fe053bd065cde9434823d567a605b48602bb13d649df1fcb95355cfcd&",
+      "https://cdn.discordapp.com/attachments/1122199917373427803/1360601120052875294/D05B4136-B9CF-445D-9AFC-845A53839DA6.png?ex=67fd0789&is=67fbb609&hm=d91ef318a57a0d679a879a09ad57bcf6055666291cdf81aa7a9764b12cdc6f08&",
+      "https://cdn.discordapp.com/attachments/1122199917373427803/1360601066475098262/704B1DC3-A0D8-4355-BE18-D7605751FF93.png?ex=67fd077c&is=67fbb5fc&hm=019fef6203f64afc24820626d5e03d2ab137aa79102eafe4ab4efabedf3f153d&",
+      "https://cdn.discordapp.com/attachments/1122199917373427803/1360600971763388598/1B2D34CB-8110-4126-967F-05A478A43279.png?ex=67fd0766&is=67fbb5e6&hm=e2407b7a4ab57e8fee192b492dc75ac0f1a55bfb8e5fb339ba459f8c89c76e97&",
+      "https://cdn.discordapp.com/attachments/1122199917373427803/1360600744348221540/6917BFE3-454E-474A-A1DD-74194FFB48C9.png?ex=67fd0730&is=67fbb5b0&hm=6018fc2484f6df6c87a9bc2b17a46bacc09208e5d9f2d2437abc319b895c5a88&",
     ],
     github: "https://github.com/Jowyd/TheCrew",
   },
