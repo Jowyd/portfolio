@@ -175,7 +175,7 @@ const HomePage = () => {
             opportunities to be part of your visions.
           </p>
           <Link
-            to="/contact"
+            to="/connect"
             className="inline-block px-8 py-4 bg-fiddle-dark text-white rounded-lg font-medium hover:bg-opacity-90 transition-colors"
           >
             Get in Touch
